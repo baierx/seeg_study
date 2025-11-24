@@ -1,8 +1,6 @@
-# sEEG and Chain of Oscillators
+# Epileptic EEG and Coupled Oscillators
   
-## An sEEG study to compare charge data to a charge model
+## A study to search for recurrent spatio-temporal transients
 
-1. Import and analyse sEEG data
-2. Run a 1D model of the data
 
 
