@@ -4,6 +4,31 @@ def sigmoid(u):
 
     return np.tanh(u)
 
+def one_oscillator(t, y, h_in, pars, sr, time_stop, pert):
+               
+    tau_ex, tau_in, c2, c4, c_EE, c_EI = pars
+
+    time_index = int(t*sr)
+
+    if time_index >= time_stop*sr:
+
+        dydt = np.zeros(2)
+
+        return dydt
+
+
+    else:
+        
+        dydt = (
+
+            (pert[time_index] - y[0] - c2*sigmoid(y[1]) + c_EE*sigmoid(y[0]))*tau_ex,
+             
+            (h_in             - y[1] - c4*sigmoid(y[1]) + c_EI*sigmoid(y[0]))*tau_in
+           )
+
+    return dydt
+
+
 def two_oscillators(t, y, h_ex, h_in, pars, frac_E, frac_I, sr, time_stop, pert):
                
     tau_ex, tau_in, c2, c4, c_EE, c_EI = pars
